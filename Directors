@@ -1,0 +1,30 @@
+
+*\ Did is some Solidity */ :---- D
+
+
+
+
+import "Directors.sol";
+import "Exchange.sol";
+import "Shareholders.sol";
+import "Bylaws.sol";
+import "Voting.sol";
+import "Vesting.sol";
+
+contract Directorate is Bylaws, Shareholders, Exchange, Directors, Voting, Vesting {
+    function Directorate(){}
+    
+    
+    function NewVote(uint r, bool d) isDirector public returns (bool){
+        return vote(r, d);
+    }
+    
+    function NewResolution(string p, bool EOR) isDirector public returns(uint){
+        return newResolution(p, EOR, 0, 0, "");
+    }
+    
+    function issueShares(uint shares, uint price) public returns(uint Resolution){
+        return newIssuanceVote(shares, price);
+    }
+    
+}
